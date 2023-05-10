@@ -1,0 +1,47 @@
+@startuml
+
+entity Order {
+    * id VARCHAR(100) <<PK>>
+    * created_at TIMESTAMP
+    --
+    * seller_id VARCHAR(100)
+    * seller_name VARCHAR(100)
+    --
+    * buyer_id VARCHAR(100)
+    * buyer_name VARCHAR(100)
+    --
+    * shipping_name VARCHAR(100)
+    * shipping_address VARCHAR(500)
+    * shipping_phone VARCHAR(25)
+    --
+    * logistic_id VARCHAR(100)
+    * logistic_name VARCHAR(100)
+    --
+    * payment_method_id VARCHAR(100)
+    * payment_method_name VARCHAR(100)
+    --
+    * total_quantity INT
+    * total_weight INT
+    * total_product_amount BIGINT
+    * total_shipping_cost BIGINT
+    * total_shopping_amount BIGINT
+    * service_charge BIGINT
+    * total_amount BIGINT
+}
+
+entity OrderDetail {
+    * id VARCHAR(100) <<PK>>
+    * order_id VARCHAR(100) <<FK>>
+    --
+    * product_id VARCHAR(100)
+    * product_name VARCHAR(250)
+    * product_weight INT
+    * product_price BIGINT
+    --
+    * quantity INT
+    * total_amount BIGINT
+}
+
+Order ||--o{ OrderDetail
+
+@enduml
